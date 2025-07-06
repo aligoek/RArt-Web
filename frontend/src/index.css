@@ -1,0 +1,260 @@
+/* frontend/src/index.css */
+/* Bootstrap'ı içe aktar */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Custom font styles to match the design */
+/* Avenir Font Family */
+@font-face {
+    font-family: 'Avenir';
+    src: url('./Fonts/avenir/Avenir-Book.ttf') format('truetype');
+    font-weight: 400; /* Book */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url('./Fonts/avenir/Avenir-Medium.ttf') format('truetype');
+    font-weight: 600; /* Medium */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url('./Fonts/avenir/Avenir-Heavy.ttf') format('truetype');
+    font-weight: 700; /* Heavy */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url('./Fonts/avenir/Avenir-Black.ttf') format('truetype');
+    font-weight: 900; /* Black */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url('./Fonts/avenir/Avenir-Light.ttf') format('truetype');
+    font-weight: 300; /* Light */
+    font-style: normal;
+}
+
+
+/* Montserrat Font Family */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./Fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./Fonts/montserrat/Montserrat-Medium.otf') format('opentype');
+    font-weight: 500; /* Medium */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./Fonts/montserrat/Montserrat-SemiBold.otf') format('opentype');
+    font-weight: 600; /* SemiBold */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./Fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+}
+
+
+/* Nunito Font Family (sadece Avenir ile değiştirildiği için burada kaldırılabilir veya Avenir'e yönlendirilebilir) */
+/* Eğer Nunito kullanmak isterseniz, ilgili font dosyalarını Fonts klasörüne ekleyip buradan tanımlamanız gerekir. */
+/* Tasarımda Avenir kullanıldığı belirtildiği için Nunito fontlarını kaldırdım. */
+
+
+html, body { /* Hem html hem de body etiketine arka plan rengi uygulandı */
+    font-family: 'Avenir', sans-serif; /* Avenir alternative */
+    background-color: #FFFFFF !important; /* Sayfa arka plan rengi beyaz olmalı */
+    padding: 0;
+    height: 100%;
+}
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+.font-avenir-book {
+    font-family: 'Avenir', sans-serif;
+    font-weight: 400; /* Book weight */
+}
+.font-avenir-medium {
+     font-family: 'Avenir', sans-serif;
+     font-weight: 600; /* Medium weight */
+}
+
+/* Font Sizes */
+.product-list-title {
+    font-family: 'Avenir', sans-serif; /* Daha önce Nunito idi, Avenir ile değiştirildi */
+    font-size: 45px !important;
+    font-weight: 400; /* Book weight */
+}
+
+.product-title-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px !important;
+    font-weight: 600; /* Medium weight */
+}
+
+.price-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px !important;
+    font-weight: 400; /* Regular weight */
+}
+
+.color-text {
+    font-family: 'Avenir', sans-serif; /* Daha önce Nunito idi, Avenir ile değiştirildi */
+    font-size: 12px !important;
+    font-weight: 400; /* Book weight */
+}
+
+.rating-text {
+    font-family: 'Avenir', sans-serif; /* Daha önce Nunito idi, Avenir ile değiştirildi */
+    font-size: 14px !important;
+    font-weight: 400; /* Book weight */
+}
+
+
+/* Custom styles for the carousel navigation */
+.swiper-button-next, .swiper-button-prev {
+    color: #000 !important; /* Buton ikon rengi siyah olmalı */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 30px; /* Boyutu küçült */
+    height: 30px; /* Boyutu küçült */
+    top: 40%;
+    transform: translateY(-50%); /* Dikey hizalama için */
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 15px !important; /* Ok ikonunun boyutunu küçült */
+    font-weight: bold;
+}
+.swiper-button-prev {
+    left: -50px !important; /* Sol oku daha dışa taşı */
+}
+.swiper-button-next {
+    right: -50px !important; /* Sağ oku daha dışa taşı */
+}
+.swiper-button-next {
+    right: -50px; /* Sağ oku daha dışa taşı */
+}
+
+
+/* Swiper container padding for navigation buttons to be visible */
+.swiper-container {
+    /* Padding'i koruyabiliriz veya kaldırabiliriz, önemli olan scrollbarın alanı */
+    /* overflow: visible; or remove it entirely for scrollbar to show */
+    overflow: hidden; /* Taşmayı gizle - This was causing the issue, removing it will show the scrollbar */
+    padding-bottom: 2rem; /* Add padding to make space for the scrollbar */
+}
+
+/* Custom scrollbar */
+.swiper-scrollbar {
+    /* margin-top: 12rem !important;  This was pushing the scrollbar down and out of view */
+    position: relative !important; /* Ensure proper positioning */
+    bottom: 0 !important; /* Position at the bottom of the swiper container */
+    left: 0 !important;
+    width: 100% !important;
+    height: 5px !important; /* Make it a bit thicker for visibility */
+    background: #f0f0f0 !important; /* Background for the scrollbar track */
+    margin-top: 2rem !important; /* Adjusted margin top to place it below the carousel and within visible area */
+    opacity: 1 !important;
+}
+.swiper-scrollbar-drag {
+    background: #E6CA97 !important;
+    height: 100% !important; 
+    border-radius: 5px !important; /* Rounded corners for the draggable part */
+    cursor: grab !important;
+}
+
+
+/* Color picker styles */
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* Başlangıçta 1px saydam kenarlık */
+    border: 1px solid transparent; 
+    /* Dış çizgi (outline) için geçiş ekleyebiliriz */
+    transition: border-color 0.3s, outline-color 0.3s; 
+    box-sizing: border-box; /* Padding'in genişliği etkilememesi için */
+    /* Outline'ı başlangıçta gizlemek için */
+    outline: 1px solid transparent; 
+    outline-offset: 0px; /* Outline'ın elemandan uzaklığını ayarlar */
+}
+
+.color-dot.selected {
+    /* İçteki dairenin etrafındaki 1px siyah kenarlık */
+    border-color: #333; 
+    /* Bu, border ile outline arasında istediğiniz boşluğu yaratır */
+    outline: 1px solid #333; /* 1 piksellik seçim çemberi */
+    outline-offset: 3px; /* 1px border + 2px boşluk = 3px uzaklık */
+}
+
+/* Star rating */
+.star-rating .filled {
+    color: #F6D5A8; /* Yıldız rengi güncellendi */
+}
+.star-rating .bi-star-fill {
+    color: #F6D5A8; /* SVG yıldızlar için de renk */
+}
+.star-rating .text-secondary {
+    color: #ccc !important; /* Boş yıldızlar için daha açık bir gri */
+}
+
+
+/* Product Card specific styles */
+.card {
+    background-color: transparent !important; /* Kartlar şeffaf */
+    box-shadow: none !important; /* Gölge kaldırıldı */
+    border: none !important; /* Kenarlık kaldırıldı */
+    border-radius: 0 !important; /* Kart köşeleri sıfırlandı */
+}
+
+.card-body {
+    padding: 1rem; /* İç boşluk ayarı */
+    text-align: left; /* İçerik sola yaslandı */
+}
+
+.card-title {
+    margin-bottom: 0.25rem; /* Başlık alt boşluğu azaltıldı */
+}
+
+.card-text {
+    margin-bottom: 0.5rem; /* Fiyat alt boşluğu azaltıldı */
+}
+
+/* Rating container alignment */
+.product-rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Sola yaslandı */
+    gap: 0.5rem; /* Boşluk eklendi */
+    margin-top: 0.75rem; /* Üst boşluk */
+}
+
+/* Ensure the image container has proper aspect ratio or fixed height */
+.product-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7; /* Resim arka plan rengi */
+    border-radius: 20px; /* Resim arka planı border radius */
+    overflow: hidden; /* İçerik taşmasını engelle */
+    margin: 1rem; /* Kartın kenarlarından boşluk */
+    aspect-ratio: 1 / 1; /* Kare olmasını sağlar */
+}
+
+/* Ana içerik kapsayıcısının arka plan rengi */
+.main-content-container {
+    background-color: #FFFFFF !important;
+}
+
+#root {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
