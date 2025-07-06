@@ -10,7 +10,7 @@ Swiper.use([Navigation, Scrollbar]);
 
 const ProductCarousel = ({ products }) => {
     const swiperRef = useRef(null);
-    const swiperContainerRef = useRef(null); container
+    const swiperContainerRef = useRef(null); 
 
     useEffect(() => {
         if (swiperRef.current) {
