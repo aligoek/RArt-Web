@@ -1,46 +1,42 @@
-// frontend/src/App.js
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap'; // React-Bootstrap bileşenlerini içe aktar
+import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap'; 
 import ProductCarousel from './components/ProductCarousel';
-import { fetchProductsAPI } from './api/products'; // API servisinden ürün çekme fonksiyonunu içe aktar
-import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS'ini içe aktar
+import { fetchProductsAPI } from './api/products'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-// Ana uygulama bileşeni
 const App = () => {
-    const [products, setProducts] = useState([]); // Ürünleri tutmak için state
-    const [loading, setLoading] = useState(true); // Yükleme durumunu tutmak için state
-    const [error, setError] = useState(null); // Hata durumunu tutmak için state
+    const [products, setProducts] = useState([]); 
+    const [loading, setLoading] = useState(true); 
+    const [error, setError] = useState(null); 
 
     useEffect(() => {
-        // Ürünleri yüklemek için asenkron fonksiyon
         const loadProducts = async () => {
             try {
-                setLoading(true); // Yüklemeyi başlat
-                const data = await fetchProductsAPI(); // API'den ürünleri çek
-                console.log("Çekilen ürünler:", data); // BURAYA EKLEYİN
-                setProducts(data); // Ürünleri state'e kaydet
+                setLoading(true); 
+                const data = await fetchProductsAPI(); 
+                console.log("Çekilen ürünler:", data); 
+                setProducts(data); 
             } catch (err) {
-                setError('Ürünler yüklenirken bir hata oluştu.'); // Hata mesajını ayarla
-                console.error(err); // Konsola hatayı yazdır
+                setError('Ürünler yüklenirken bir hata oluştu.'); 
+                console.error(err); 
             } finally {
-                setLoading(false); // Yüklemeyi bitir
+                setLoading(false); 
             }
         };
-        loadProducts(); // Fonksiyonu çağır
-    }, []); // Sadece bir kere çalışması için boş bağımlılık dizisi
+        loadProducts(); 
+    }, []); 
 
     return (
-        // Bootstrap Container kullanıldı ve yeni bir sınıf eklendi
         <Container className="py-5 main-content-container">
             <Row className="text-center mb-4">
                 <Col>
-                    {/* Başlık fontu ve rengi güncellendi, divider kaldırıldı */}
+                    {}
                     <h1 className="product-list-title text-dark">Product List</h1>
-                    {/* Divider kaldırıldı */}
+                    {}
                 </Col>
             </Row>
 
-            {/* Yükleme durumu */}
+            {}
             {loading && (
                 <Row className="text-center py-5">
                     <Col>
@@ -51,7 +47,7 @@ const App = () => {
                     </Col>
                 </Row>
             )}
-            {/* Hata durumu */}
+            {}
             {error && (
                 <Row className="text-center py-5">
                     <Col>
@@ -59,7 +55,7 @@ const App = () => {
                     </Col>
                 </Row>
             )}
-            {/* Yükleme tamamlandığında ve hata yoksa ürün karuselini göster */}
+            {}
             {!loading && !error && <ProductCarousel products={products} />}
         </Container>
     );

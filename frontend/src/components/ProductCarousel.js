@@ -1,27 +1,24 @@
 import React, { useEffect, useRef } from 'react';
 import Swiper from 'swiper';
-import { Navigation, Scrollbar } from 'swiper/modules'; // Import modules
+import { Navigation, Scrollbar } from 'swiper/modules'; 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 import ProductCard from './ProductCard';
 
-// Install Swiper modules
-Swiper.use([Navigation, Scrollbar]); // Install necessary modules
+Swiper.use([Navigation, Scrollbar]); 
 
 const ProductCarousel = ({ products }) => {
     const swiperRef = useRef(null);
-    const swiperContainerRef = useRef(null); // Reference for the Swiper container
+    const swiperContainerRef = useRef(null); container
 
     useEffect(() => {
-        // Mevcut Swiper örneğini yok et, böylece yeni ürünlerle yeniden başlatılabilir.
         if (swiperRef.current) {
             swiperRef.current.destroy(true, true);
         }
 
-        // Initialize Swiper only if the container ref is available
         if (swiperContainerRef.current) {
-            swiperRef.current = new Swiper(swiperContainerRef.current, { // Use the ref directly
+            swiperRef.current = new Swiper(swiperContainerRef.current, { 
                 loop: false,
                 slidesPerView: 1,
                 spaceBetween: 30,
@@ -45,7 +42,6 @@ const ProductCarousel = ({ products }) => {
                         slidesPerView: 4,
                     },
                 },
-                // DOM değişikliklerini gözlemle ve Swiper'ı yeniden başlat
                 observer: true,
                 observeParents: true,
                 observeSlideChildren: true,
@@ -57,15 +53,15 @@ const ProductCarousel = ({ products }) => {
                 swiperRef.current.destroy(true, true);
             }
         };
-    }, [products]); // `products` değiştiğinde Swiper'ı yeniden başlat
+    }, [products]); 
 
-    if (!products || products.length === 0) { // Ürün yoksa mesaj göster
+    if (!products || products.length === 0) { 
         return <div className="text-center p-5">No products found.</div>;
     }
 
     return (
         <div className="position-relative">
-            <div className="swiper-container" ref={swiperContainerRef}> {/* Attach the ref here */}
+            <div className="swiper-container" ref={swiperContainerRef}> {}
                 <div className="swiper-wrapper py-4">
                     {products.map((product, index) => (
                         <div key={index} className="swiper-slide">
@@ -73,10 +69,10 @@ const ProductCarousel = ({ products }) => {
                         </div>
                     ))}
                 </div>
-                {/* Kaydırma çubuğu */}
+                {}
                 <div className="swiper-scrollbar mt-4"></div>
             </div>
-            {/* Gezinme düğmeleri */}
+            {}
             <div className="swiper-button-prev"></div>
             <div className="swiper-button-next"></div>
         </div>

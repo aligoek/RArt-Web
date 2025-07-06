@@ -1,7 +1,4 @@
-// frontend/src/api/products.js
-// Bu dosya, backend API'sinden ürünleri çeker.
-
-const API_BASE_URL = 'https://rart-web.onrender.com'; // Backend sunucunuzun adresi
+const API_BASE_URL = 'https://rart-web.onrender.com'; 
 
 export const fetchProductsAPI = async (filters = {}) => {
     try {
@@ -14,6 +11,6 @@ export const fetchProductsAPI = async (filters = {}) => {
         return data;
     } catch (error) {
         console.error("Ürünler çekilirken bir hata oluştu:", error);
-        throw error; // Hatayı yeniden fırlat ki App.js'de yakalanabilsin
+        throw error; 
     }
 };

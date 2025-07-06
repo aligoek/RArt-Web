@@ -1,17 +1,13 @@
-// backend/products.js
 const productsData = require('./products.json');
 
-// Metal Price API bilgileri
 const METAL_PRICE_API_URL = 'https://api.metalpriceapi.com/v1/latest';
-const API_KEY = process.env.METAL_PRICE_API_KEY; // API anahtarınızı ortam değişkeninden alın
+const API_KEY = process.env.METAL_PRICE_API_KEY; 
 
-// Troy Ons (XAU) başına gram miktarı
 const GRAMS_PER_TROY_OUNCE = 31.1035; 
 
 const getProducts = async (filters = {}) => {
-    let goldPrice; // USD/gram olarak altın fiyatı
+    let goldPrice; 
     try {
-        // Metal Price API'den XAU'nun (Ons Altın) USD karşılığını çekme
         const response = await fetch(
             `${METAL_PRICE_API_URL}?api_key=${API_KEY}&base=USD&currencies=XAU`
         );
@@ -21,26 +17,22 @@ const getProducts = async (filters = {}) => {
         }
         const data = await response.json();
 
-        // API yanıtını kontrol edin ve altın fiyatını çıkarın
-        // Yanıt formatı genellikle {"rates": {"XAU": 0.00043}} gibi olacaktır
         const xauToUsdRate = data?.rates?.XAU;
 
         if (typeof xauToUsdRate !== 'number' || xauToUsdRate <= 0) {
             throw new Error('API yanıtında geçerli altın fiyatı (XAU oranı) bulunamadı.');
         }
 
-        // 1 USD = XAU oranı elimizde. Biz 1 XAU = USD oranını istiyoruz.
         const pricePerTroyOunceUSD = 1 / xauToUsdRate;
 
-        // Ons başına fiyatı gram başına fiyata dönüştür
         goldPrice = pricePerTroyOunceUSD / GRAMS_PER_TROY_OUNCE;
         console.log(`Gerçek zamanlı ons fiyatı: ${pricePerTroyOunceUSD} USD/ons`);
         console.log(`Gerçek zamanlı altın fiyatı (USD/gram): ${goldPrice}`);
 
     } catch (error) {
         console.error('Altın fiyatı çekilirken bir hata oluştu:', error.message);
-        // Hata durumunda statik bir fallback değer kullanabiliriz
-        goldPrice = 75.50; // Hata durumunda kullanılacak fallback fiyat
+        
+        goldPrice = 75.50; 
         console.log(`Fallback altın fiyatı kullanılıyor: ${goldPrice} USD/gram`);
     }
 
@@ -54,7 +46,7 @@ const getProducts = async (filters = {}) => {
         };
     });
 
-    // Bonus: Filtreleme
+   
     if (filters.minPrice) {
         products = products.filter(p => p.price >= filters.minPrice);
     }
