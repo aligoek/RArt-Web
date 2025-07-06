@@ -1,7 +1,7 @@
 // frontend/src/api/products.js
 // Bu dosya, backend API'sinden ürünleri çeker.
 
-const API_BASE_URL = 'http://localhost:5000'; // Backend sunucunuzun adresi
+const API_BASE_URL = 'https://rart-web.onrender.com'; // Backend sunucunuzun adresi
 
 export const fetchProductsAPI = async (filters = {}) => {
     try {

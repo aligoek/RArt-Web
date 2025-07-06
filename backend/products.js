@@ -3,7 +3,7 @@ const productsData = require('./products.json');
 
 // Metal Price API bilgileri
 const METAL_PRICE_API_URL = 'https://api.metalpriceapi.com/v1/latest';
-const API_KEY = 'e5d76f73a600bf6976618b97a69f01db'; // Sizin Metal Price API anahtarınız
+const API_KEY = process.env.METAL_PRICE_API_KEY; // API anahtarınızı ortam değişkeninden alın
 
 // Troy Ons (XAU) başına gram miktarı
 const GRAMS_PER_TROY_OUNCE = 31.1035; 
